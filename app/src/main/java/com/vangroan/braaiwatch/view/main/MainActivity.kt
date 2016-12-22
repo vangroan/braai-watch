@@ -12,11 +12,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var timerText : String
     private val timer: Timer = Timer()
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         timerText = getString(R.string.activity_main_timer)
+        updateTimer()
 
         timer.setOnTimerListener(object : Timer.OnTimerListener{
             override fun onTimer() {

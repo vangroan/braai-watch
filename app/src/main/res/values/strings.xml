@@ -2,6 +2,7 @@
     <string name="app_name">Braai Watch</string>
 
     <!-- Main ACtivity -->
+    <string name="activity_main_title">Timer</string>
     <string name="activity_main_timer">%1$02d:%2$02d:%3$02d</string>
     <string name="activity_main_button_start">Start</string>
     <string name="activity_main_button_stop">Stop</string>
