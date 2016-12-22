@@ -24,6 +24,16 @@ class MainActivity : AppCompatActivity() {
                 updateTimer()
             }
         })
+
+        activity_main_button.setOnClickListener {
+            if (timer.isRunning()) {
+                timer.stop()
+                activity_main_button.text = getText(R.string.activity_main_button_start)
+            } else {
+                timer.start()
+                activity_main_button.text = getText(R.string.activity_main_button_stop)
+            }
+        }
     }
 
     private fun updateTimer() {
