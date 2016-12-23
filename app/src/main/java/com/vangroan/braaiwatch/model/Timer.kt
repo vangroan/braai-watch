@@ -70,11 +70,11 @@ class Timer {
         return mode == TimerMode.RUNNING
     }
 
-    fun setOnTimerListener(listener: OnTimerListener) {
+    fun setOnTimerListener(listener: OnTimerListener?) {
         onTimerListener = listener
     }
 
-    fun setOnCounterListener(listener: OnCounterListener) {
+    fun setOnCounterListener(listener: OnCounterListener?) {
         onCounterListener = listener
     }
 
