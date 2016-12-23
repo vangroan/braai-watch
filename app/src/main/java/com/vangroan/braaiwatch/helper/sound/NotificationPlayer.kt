@@ -14,7 +14,7 @@ import java.io.IOException
  *
  * Created by Victor on 2016/12/23.
  */
-class AudioNotifier(context: Context) {
+class NotificationPlayer(context: Context) {
 
     private var player: MediaPlayer? = null
     private val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)

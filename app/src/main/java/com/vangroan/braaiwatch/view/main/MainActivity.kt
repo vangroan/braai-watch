@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.vangroan.braaiwatch.R
-import com.vangroan.braaiwatch.helper.sound.AudioNotifier
+import com.vangroan.braaiwatch.helper.sound.NotificationPlayer
 import com.vangroan.braaiwatch.model.Timer
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var timerText: String
     private val timer: Timer = Timer()
-    private lateinit var audioNotifier: AudioNotifier
+    private lateinit var audioNotifier: NotificationPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        audioNotifier = AudioNotifier(this)
+        audioNotifier = NotificationPlayer(this)
 
         timer.setOnCounterListener(object : Timer.OnCounterListener{
             override fun onCounter(counter: Long) {
