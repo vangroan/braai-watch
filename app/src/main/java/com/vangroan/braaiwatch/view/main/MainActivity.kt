@@ -2,6 +2,7 @@ package com.vangroan.braaiwatch.view.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.vangroan.braaiwatch.R
 import com.vangroan.braaiwatch.model.Timer
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         timer.setOnTimerListener(object : Timer.OnTimerListener {
             override fun onTimer() {
                 updateTimer()
+            }
+        })
+
+        timer.setOnCounterListener(object : Timer.OnCounterListener {
+            override fun onCounter(counter: Long) {
+                Log.d(TAG, counter.toString())
             }
         })
 
@@ -44,5 +51,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateTimer() {
         activity_main_timer.text = String.format(timerText, timer.hours, timer.minutes, timer.seconds)
+    }
+
+    companion object {
+        @JvmStatic val TAG = MainActivity::class.simpleName
     }
 }

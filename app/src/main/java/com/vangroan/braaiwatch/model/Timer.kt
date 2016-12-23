@@ -20,10 +20,14 @@ class Timer {
     var hours: Long = 0
         private set
 
+    var counter: Long = 0
+        private set
+
     private var mode = TimerMode.STOPPED
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var runner: Runnable
     private var onTimerListener : OnTimerListener? = null
+    private var onCounterListener : OnCounterListener? = null
 
     init {
         runner = Runnable {
@@ -34,6 +38,12 @@ class Timer {
             hours = (((current / 1000) / 60) / 60)
 
             onTimerListener?.onTimer()
+
+            if (current / COUNTER_MILESTONE >= counter) {
+                onCounterListener?.onCounter(counter)
+                // Fire at next milestone
+                counter = (current / COUNTER_MILESTONE) + 1
+            }
 
             if (isRunning())
                 handler.postDelayed(runner, INTERVAL)
@@ -46,6 +56,7 @@ class Timer {
         seconds = 0
         minutes = 0
         hours = 0
+        counter = 0
         mode = TimerMode.RUNNING
 
         handler.postDelayed(runner, INTERVAL)
@@ -63,11 +74,20 @@ class Timer {
         onTimerListener = listener
     }
 
+    fun setOnCounterListener(listener: OnCounterListener) {
+        onCounterListener = listener
+    }
+
     interface OnTimerListener {
         fun onTimer()
     }
 
+    interface OnCounterListener {
+        fun onCounter(counter: Long)
+    }
+
     companion object {
         @JvmStatic val INTERVAL = 1000L
+        @JvmStatic val COUNTER_MILESTONE = 5000L
     }
 }
