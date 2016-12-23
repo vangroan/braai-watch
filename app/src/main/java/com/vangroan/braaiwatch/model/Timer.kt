@@ -8,6 +8,7 @@ import android.os.Looper
  */
 class Timer {
 
+    var counterMilestone = COUNTER_MILESTONE
     private var startTime: Long = 0
     private var current: Long = 0
 
@@ -20,7 +21,8 @@ class Timer {
     var hours: Long = 0
         private set
 
-    var counter: Long = 0
+    // Counter starts at 1 so that notification doesn't fire on time 0
+    var counter: Long = 1L
         private set
 
     private var mode = TimerMode.STOPPED
@@ -39,10 +41,10 @@ class Timer {
 
             onTimerListener?.onTimer()
 
-            if (current / COUNTER_MILESTONE >= counter) {
+            if (current / counterMilestone >= counter) {
                 onCounterListener?.onCounter(counter)
                 // Fire at next milestone
-                counter = (current / COUNTER_MILESTONE) + 1
+                counter = (current / counterMilestone) + 1
             }
 
             if (isRunning())
@@ -56,7 +58,7 @@ class Timer {
         seconds = 0
         minutes = 0
         hours = 0
-        counter = 0
+        counter = 1L
         mode = TimerMode.RUNNING
 
         handler.postDelayed(runner, INTERVAL)

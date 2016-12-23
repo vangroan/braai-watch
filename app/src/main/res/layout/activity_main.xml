@@ -26,4 +26,10 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/activity_main_button_start" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_main_spinner" />
+
 </RelativeLayout>

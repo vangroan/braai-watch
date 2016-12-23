@@ -3,9 +3,12 @@ package com.vangroan.braaiwatch.view.main
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import com.vangroan.braaiwatch.R
 import com.vangroan.braaiwatch.helper.sound.NotificationPlayer
 import com.vangroan.braaiwatch.model.Timer
+import com.vangroan.braaiwatch.view.main.adapters.IntervalAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +36,24 @@ class MainActivity : AppCompatActivity() {
             else
                 startTimer()
         }
+
+        // Interval Spinner
+        val adapter = IntervalAdapter(this, android.R.layout.simple_spinner_item)
+        (1L..20L).map { x -> adapter.add(x) }
+        activity_main_spinner.adapter = adapter
+        activity_main_spinner.setSelection(4) // TODO: Set using DEFAULT_COUNTER_INTERVAL
+
+        activity_main_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                updateInterval(adapter.getItem(position))
+            }
+        }
+
+        updateInterval(activity_main_spinner.selectedItem as Long? ?: DEFAULT_COUNTER_INTERVAL)
     }
 
     override fun onStart() {
@@ -70,7 +91,12 @@ class MainActivity : AppCompatActivity() {
         activity_main_timer.text = String.format(timerText, timer.hours, timer.minutes, timer.seconds)
     }
 
+    private fun updateInterval(interval: Long) {
+        timer.counterMilestone = interval * 1000 // To milliseconds
+    }
+
     companion object {
         @JvmStatic val TAG = MainActivity::class.simpleName
+        @JvmStatic val DEFAULT_COUNTER_INTERVAL: Long = 5 // Seconds
     }
 }
