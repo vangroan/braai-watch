@@ -12,22 +12,13 @@ class Timer {
     private var current: Long = 0
 
     var seconds: Long = 0
-        get() = field
-        private set(value) {
-            field = value
-        }
+        private set
 
     var minutes: Long = 0
-        get() = field
-        private set(value) {
-            field = value
-        }
+        private set
 
     var hours: Long = 0
-        get() = field
-        private set(value) {
-            field = value
-        }
+        private set
 
     private var mode = TimerMode.STOPPED
     private val handler = Handler(Looper.getMainLooper())
