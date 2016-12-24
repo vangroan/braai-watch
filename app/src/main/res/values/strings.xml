@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Braai Watch</string>
 
-    <!-- Main ACtivity -->
+    <!-- Main Activity -->
     <string name="activity_main_title">Timer</string>
     <string name="activity_main_timer">%1$02d:%2$02d:%3$02d</string>
     <string name="activity_main_button_start">Start</string>
     <string name="activity_main_button_stop">Stop</string>
+
+    <string name="activity_main_interval_option_5_seconds">5 seconds</string>
+    <string name="activity_main_interval_option_15_seconds">15 seconds</string>
+    <string name="activity_main_interval_option_30_seconds">30 seconds</string>
+    <string name="activity_main_interval_option_60_seconds">60 seconds</string>
 </resources>
