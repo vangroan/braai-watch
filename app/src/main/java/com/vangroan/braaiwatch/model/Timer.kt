@@ -9,6 +9,14 @@ import android.os.Looper
 class Timer {
 
     var counterMilestone = COUNTER_MILESTONE
+        get
+        set(value) {
+            field = value
+            // Reset the counter using the new milestone, otherwise the next interval milestone will
+            // be far into the future.
+            counter = (current / counterMilestone) + 1
+        }
+
     private var startTime: Long = 0
     private var current: Long = 0
 
@@ -28,8 +36,8 @@ class Timer {
     private var mode = TimerMode.STOPPED
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var runner: Runnable
-    private var onTimerListener : OnTimerListener? = null
-    private var onCounterListener : OnCounterListener? = null
+    private var onTimerListener: OnTimerListener? = null
+    private var onCounterListener: OnCounterListener? = null
 
     init {
         runner = Runnable {
