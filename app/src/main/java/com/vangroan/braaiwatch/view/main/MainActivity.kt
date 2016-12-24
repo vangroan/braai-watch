@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import com.vangroan.braaiwatch.R
 import com.vangroan.braaiwatch.helper.sound.NotificationPlayer
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         timerText = getString(R.string.activity_main_timer)
         updateTimer()
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         audioNotifier = NotificationPlayer(this)
 
-        timer.setOnCounterListener(object : Timer.OnCounterListener{
+        timer.setOnCounterListener(object : Timer.OnCounterListener {
             override fun onCounter(counter: Long) {
                 Log.d(TAG, counter.toString())
                 audioNotifier.play()
