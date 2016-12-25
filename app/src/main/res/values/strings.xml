@@ -2,6 +2,9 @@
     <string name="app_name">Braai Watch</string>
 
     <!-- Main Activity -->
+    <string name="activity_main_chooser_share_title">Share text to&#8230;</string>
+    <string name="activity_main_menu_share">Share</string>
+
     <string name="activity_main_title">Timer</string>
     <string name="activity_main_timer">%1$02d:%2$02d:%3$02d</string>
     <string name="activity_main_button_start">Start</string>

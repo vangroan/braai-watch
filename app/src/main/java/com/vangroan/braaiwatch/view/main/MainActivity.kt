@@ -1,8 +1,11 @@
 package com.vangroan.braaiwatch.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -76,6 +79,24 @@ class MainActivity : AppCompatActivity() {
 
         // Ensure native resources are released while activity is inactive
         audioNotifier.destroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.activity_main, menu)
+        return return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.activity_main_menu_share -> {
+                val intent = Intent()
+                intent.action = Intent.ACTION_SEND
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, "Test share")
+                startActivity(Intent.createChooser(intent, getText(R.string.activity_main_chooser_share_title)))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun startTimer() {
