@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent()
                 intent.action = Intent.ACTION_SEND
                 intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TEXT, "Test share")
+                intent.putExtra(Intent.EXTRA_TEXT, "http://www.google.com ")
                 startActivity(Intent.createChooser(intent, getText(R.string.activity_main_chooser_share_title)))
             }
         }
