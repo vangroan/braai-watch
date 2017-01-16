@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.model
+package com.vangroan.braaiwatch.main.domain.model
 
 /**
  * Created by Victor on 2016/12/22.

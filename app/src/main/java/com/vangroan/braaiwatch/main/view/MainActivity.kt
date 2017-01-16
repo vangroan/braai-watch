@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.view.main
+package com.vangroan.braaiwatch.main.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,10 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import com.vangroan.braaiwatch.R
-import com.vangroan.braaiwatch.helper.sound.NotificationPlayer
-import com.vangroan.braaiwatch.model.Timer
-import com.vangroan.braaiwatch.view.main.adapters.IntervalAdapter
-import com.vangroan.braaiwatch.view.main.enums.IntervalOption
+import com.vangroan.braaiwatch.main.helper.sound.NotificationPlayer
+import com.vangroan.braaiwatch.main.domain.model.Timer
+import com.vangroan.braaiwatch.main.view.adapters.IntervalAdapter
+import com.vangroan.braaiwatch.main.view.enums.IntervalOption
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.main.MainActivity"
+            android:name="com.vangroan.braaiwatch.main.view.MainActivity"
             android:label="@string/activity_main_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

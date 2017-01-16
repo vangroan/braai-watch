@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.view.main.enums
+package com.vangroan.braaiwatch.main.view.enums
 
 import android.content.Context
 import com.vangroan.braaiwatch.R

@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.model
+package com.vangroan.braaiwatch.main.domain.model
 
 import android.os.Handler
 import android.os.Looper

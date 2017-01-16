@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.helper.sound
+package com.vangroan.braaiwatch.main.helper.sound
 
 import android.content.Context
 import android.media.AudioManager

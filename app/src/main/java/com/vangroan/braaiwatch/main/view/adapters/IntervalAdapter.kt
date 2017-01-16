@@ -1,4 +1,4 @@
-package com.vangroan.braaiwatch.view.main.adapters
+package com.vangroan.braaiwatch.main.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.vangroan.braaiwatch.view.main.enums.IntervalOption
+import com.vangroan.braaiwatch.main.view.enums.IntervalOption
 
 /**
  * Created by Victor on 2016/12/23.
