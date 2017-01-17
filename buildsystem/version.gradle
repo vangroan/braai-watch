@@ -1,0 +1,35 @@
+
+task versionBump(type: VersionBumpTask) {
+    versionFile = new File('version.properties')
+}
+
+class VersionBumpTask extends DefaultTask {
+
+    @InputFile
+    File versionFile
+
+    @TaskAction
+    def bump() {
+        def props = new Properties()
+        versionFile.withInputStream {
+            stream -> props.load(stream)
+        }
+
+        int major = props.major.toInteger()
+        int minor = props.minor.toInteger()
+        int patch = props.patch.toInteger()
+
+        patch += 1
+
+        int versionCode = major * 10000 + minor * 100 + patch
+        String versionName = String.format('%s.%s.%s', major, minor, patch)
+
+        props.patch = patch.toString()
+        props.versionCode = versionCode.toString()
+        props.versionName = versionName.toString()
+
+        versionFile.withOutputStream {
+            stream -> props.store(stream, null)
+        }
+    }
+}
