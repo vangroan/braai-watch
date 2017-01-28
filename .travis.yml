@@ -12,7 +12,7 @@ android:
     - extra-android-m2repository
     - addon-google_apis-google-19
 
-    - sys-img-armeabi-v7a-android-24
+    - sys-img-armeabi-v7a-android-22
 
   licenses:
       - 'android-sdk-preview-license-52d11cd2'
@@ -37,7 +37,7 @@ env:
 before_script:
   - android list target
   # Create and start emulator
-  - echo no | android create avd --force -n test -t android-24 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
